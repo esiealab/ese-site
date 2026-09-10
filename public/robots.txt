@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ese.esiea.fr/sitemap-index.xml
