@@ -43,7 +43,42 @@ jobs:
             type=sha,prefix=sha-,format=short
             type=ref,event=tag
 
-      - uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7.3.0
+      # Construite et éprouvée localement d'abord : publier une image qui ne
+      # démarre pas serait pire que ne rien publier. Le second build réutilise
+      # le cache, il ne recompile rien.
+      - name: Construire l'image
+        uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7.3.0
+        with:
+          context: .
+          push: false
+          load: true
+          tags: ese-site:candidate
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Vérifier qu'elle démarre et sert les en-têtes
+        run: |
+          docker run -d --name ese-candidate -p 8080:8080 ese-site:candidate
+          for i in $(seq 1 30); do
+            curl -sf -o /dev/null http://127.0.0.1:8080/ && break
+            sleep 1
+          done
+          if ! curl -sf -o /dev/null http://127.0.0.1:8080/; then
+            echo "::error::l'image ne répond pas, publication annulée"
+            docker logs ese-candidate
+            exit 1
+          fi
+          headers=$(curl -sS -I http://127.0.0.1:8080/)
+          for h in "X-Content-Type-Options" "Referrer-Policy" "Content-Security-Policy"; do
+            if ! grep -qi "^$h:" <<< "$headers"; then
+              echo "::error::en-tête $h absent, publication annulée"
+              exit 1
+            fi
+          done
+          docker rm -f ese-candidate
+
+      - name: Publier sur GHCR
+        uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7.3.0
         with:
           context: .
           push: true
