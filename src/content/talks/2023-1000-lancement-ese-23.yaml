@@ -1,0 +1,6 @@
+edition: "2023"
+start: "10:00"
+end: "10:05"
+title: "Lancement ESE'23"
+kind: opening
+speakers: []

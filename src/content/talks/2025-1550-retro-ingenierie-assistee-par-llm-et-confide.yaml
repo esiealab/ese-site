@@ -1,0 +1,7 @@
+edition: "2025"
+start: "15:50"
+end: "16:30"
+title: "Rétro-ingénierie assistée par LLM et confidentialité"
+kind: talk
+speakers:
+  - mathieu-renard

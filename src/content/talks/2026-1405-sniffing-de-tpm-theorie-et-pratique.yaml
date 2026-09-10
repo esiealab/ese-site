@@ -1,0 +1,10 @@
+edition: "2026"
+start: "14:05"
+end: "14:45"
+title: "Sniffing de TPM : théorie et pratique"
+kind: talk
+track: hardware
+speakers:
+  - cyril-thomas
+abstract: >-
+  La majorité des entreprises utilisent BitLocker pour protéger leurs postes de travail, mais très peu acceptent la contrainte ajoutée par la mise en place d'un code PIN au démarrage. Bien que ce fonctionnement ajoute une couche de sécurité, des contournements sont possibles. Cette présentation portera sur un aperçu de l'une de ces méthodes : l'écoute de TPM (TPM sniffing). Y seront détaillés le principe de fonctionnement de l'attaque, ainsi que les erreurs les plus communes rencontrées sur des cas réels et comment les éviter.

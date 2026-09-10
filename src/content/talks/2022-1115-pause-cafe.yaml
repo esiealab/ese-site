@@ -1,0 +1,6 @@
+edition: "2022"
+start: "11:15"
+end: "11:30"
+title: "Pause café"
+kind: break
+speakers: []

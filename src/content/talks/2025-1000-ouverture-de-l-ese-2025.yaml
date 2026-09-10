@@ -1,0 +1,8 @@
+edition: "2025"
+start: "10:00"
+end: "10:05"
+title: "Ouverture de l'ESE 2025"
+kind: opening
+speakers:
+  - sebastien-larinier
+  - vincent-guyot

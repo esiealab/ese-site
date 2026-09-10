@@ -1,0 +1,11 @@
+edition: "2026"
+start: "15:40"
+end: "16:00"
+title: "Quid de la confiance dans le cadenas de votre navigateur web"
+kind: talk
+track: defense
+speakers:
+  - adrian-stephan
+  - cyrielle-guilliot
+abstract: >-
+  Nous allons illustrer plusieurs scenarios vraisemblables où la confiance envers le cadenas affiché dans le navigateur est mise en défaut. Ensuite nous expliquerons comment mitiger cela.

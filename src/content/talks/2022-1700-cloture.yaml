@@ -1,0 +1,6 @@
+edition: "2022"
+start: "17:00"
+title: "Clôture"
+kind: closing
+speakers:
+  - sebastien-larinier

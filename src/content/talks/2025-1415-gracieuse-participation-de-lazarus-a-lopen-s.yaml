@@ -1,0 +1,8 @@
+edition: "2025"
+start: "14:15"
+end: "14:55"
+title: "Gracieuse participation de Lazarus à l’open source"
+kind: talk
+speakers:
+  - alexandra-toussaint
+  - yassine-dgaygui

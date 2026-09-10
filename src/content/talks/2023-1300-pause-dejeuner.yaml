@@ -1,0 +1,6 @@
+edition: "2023"
+start: "13:00"
+end: "13:30"
+title: "Pause-déjeuner"
+kind: lunch
+speakers: []

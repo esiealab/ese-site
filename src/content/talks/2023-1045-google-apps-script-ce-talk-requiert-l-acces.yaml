@@ -1,0 +1,8 @@
+edition: "2023"
+start: "10:45"
+end: "11:25"
+title: "Google Apps Script : ce talk requiert l'accès à vos mails"
+kind: talk
+speakers:
+  - nicolas-kovacs
+  - sebastien-rolland

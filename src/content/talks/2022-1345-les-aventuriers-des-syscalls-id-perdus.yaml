@@ -1,0 +1,7 @@
+edition: "2022"
+start: "13:45"
+end: "14:30"
+title: "Les aventuriers des syscalls ID perdus"
+kind: talk
+speakers:
+  - alice-climent-pommeret

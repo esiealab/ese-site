@@ -1,0 +1,7 @@
+edition: "2024"
+start: "14:40"
+end: "15:20"
+title: "Yeti, Intelligence DFIR"
+kind: talk
+speakers:
+  - sebastien-larinier

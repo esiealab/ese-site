@@ -1,0 +1,10 @@
+edition: "2026"
+start: "16:00"
+end: "16:40"
+title: "Plugin DIMA"
+kind: talk
+track: cognitive
+speakers:
+  - m82-project
+abstract: >-
+  DIMA est un framework développé par le [M82 Project](https://m82-project.org/) pour analyser et détecter les manipulations de l'information et les attaques cognitives. Inspiré de MITRE ATT&CK et DISARM, il modélise une « Cognitive Kill Chain » en quatre phases (Détecter, Informer, Mémoriser, Agir) et identifie les tactiques et techniques d'exploitation des biais cognitifs. La présentation s'accompagne d'une démonstration de l'extension navigateur (Chrome et Firefox) qui permet d'analyser les pages web en temps réel.

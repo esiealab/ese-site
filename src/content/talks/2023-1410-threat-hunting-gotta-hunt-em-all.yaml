@@ -1,0 +1,8 @@
+edition: "2023"
+start: "14:10"
+end: "14:50"
+title: "Threat Hunting : Gotta hunt'em all"
+kind: talk
+speakers:
+  - matthieu-martins-baltar
+  - valentin-malet

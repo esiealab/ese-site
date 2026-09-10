@@ -1,0 +1,7 @@
+edition: "2023"
+start: "15:05"
+end: "15:45"
+title: "Compromission WAN du NETGEAR R6700V3"
+kind: talk
+speakers:
+  - kevin-denis

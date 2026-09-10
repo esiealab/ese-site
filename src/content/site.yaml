@@ -1,0 +1,19 @@
+site:
+  name: ESIEA Secure Edition
+  tagline: Conférences et ateliers sur la cybersécurité
+  email: ese@esiea.fr
+  social:
+    - name: linkedin
+      url: https://www.linkedin.com/company/esiea-secure-edition/
+  organizer:
+    name: ESIEA
+    url: https://www.esiea.fr
+  currentEdition: 2027
+  firstEdition: 2013
+  history: >-
+    Depuis 2013, la journée ESIEA Secure Edition permet d'appréhender le monde de
+    la cybersécurité à travers des présentations sur les différentes facettes de
+    ce domaine. Au fil des années, les conférences ont couvert un large spectre :
+    reverse engineering, analyse de malware, DFIR, cryptographie, sécurité
+    offensive, threat intelligence, blockchain, sécurité des infrastructures
+    critiques, IA appliquée à la cyberdéfense, ou encore surveillance numérique.

@@ -1,0 +1,10 @@
+edition: "2026"
+start: "12:35"
+end: "12:50"
+title: "Un peu plus loin avec Wappalyzer"
+kind: talk
+track: defense
+speakers:
+  - victor-poggi
+abstract: >-
+  Plutôt que de se limiter à l'inventaire des technologies constitutives des services réseaux exposés, cette extension de navigateur les corrèle avec les bases de vulnérabilités faisant ainsi gagner un temps précieux pendant la phase d'analyse de surface.

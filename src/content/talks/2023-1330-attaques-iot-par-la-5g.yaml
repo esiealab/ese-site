@@ -1,0 +1,7 @@
+edition: "2023"
+start: "13:30"
+end: "14:10"
+title: "Attaques IoT par la 5G"
+kind: talk
+speakers:
+  - sebastien-dudek

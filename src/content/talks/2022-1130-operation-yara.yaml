@@ -1,0 +1,7 @@
+edition: "2022"
+start: "11:30"
+end: "12:15"
+title: "Opération Yara"
+kind: talk
+speakers:
+  - paul-rascagneres

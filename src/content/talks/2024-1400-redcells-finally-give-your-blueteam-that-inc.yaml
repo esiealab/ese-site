@@ -1,0 +1,7 @@
+edition: "2024"
+start: "14:00"
+end: "14:40"
+title: "RedCells: Finally give your BlueTeam that incident they've been yearning for"
+kind: talk
+speakers:
+  - thomas-chopitea

@@ -1,0 +1,6 @@
+edition: "2022"
+start: "09:00"
+end: "09:30"
+title: "Accueil du public"
+kind: opening
+speakers: []

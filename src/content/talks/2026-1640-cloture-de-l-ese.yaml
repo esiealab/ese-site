@@ -1,0 +1,8 @@
+edition: "2026"
+start: "16:40"
+end: "16:45"
+title: "Clôture de l'ESE"
+kind: closing
+speakers:
+  - sebastien-larinier
+  - vincent-guyot

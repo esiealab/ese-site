@@ -1,0 +1,9 @@
+edition: "2022"
+start: "10:30"
+end: "11:15"
+title: "2021: A Titan M Odyssey"
+kind: talk
+lang: en
+speakers:
+  - maxime-rossi-bellom
+  - damiano-melotti

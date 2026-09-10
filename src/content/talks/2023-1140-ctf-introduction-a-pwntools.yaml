@@ -1,0 +1,7 @@
+edition: "2023"
+start: "11:40"
+end: "12:20"
+title: "#CTF — Introduction à pwntools"
+kind: talk
+speakers:
+  - christophe-grenier

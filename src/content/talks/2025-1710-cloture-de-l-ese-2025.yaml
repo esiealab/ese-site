@@ -1,0 +1,8 @@
+edition: "2025"
+start: "17:10"
+end: "17:15"
+title: "Clôture de l'ESE 2025"
+kind: closing
+speakers:
+  - sebastien-larinier
+  - vincent-guyot

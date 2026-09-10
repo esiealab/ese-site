@@ -1,0 +1,6 @@
+edition: "2022"
+start: "13:00"
+end: "13:45"
+title: "Pause déjeuner"
+kind: lunch
+speakers: []

@@ -1,0 +1,8 @@
+edition: "2026"
+start: "10:00"
+end: "10:05"
+title: "Ouverture de l'ESE"
+kind: opening
+speakers:
+  - sebastien-larinier
+  - vincent-guyot

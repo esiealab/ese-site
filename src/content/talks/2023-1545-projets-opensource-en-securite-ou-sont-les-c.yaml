@@ -1,0 +1,7 @@
+edition: "2023"
+start: "15:45"
+end: "16:25"
+title: "Projets Opensource en sécurité : où sont les contributeurs ?"
+kind: talk
+speakers:
+  - sebastien-larinier

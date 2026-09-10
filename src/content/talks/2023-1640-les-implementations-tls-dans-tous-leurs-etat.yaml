@@ -1,0 +1,7 @@
+edition: "2023"
+start: "16:40"
+end: "17:20"
+title: "Les implémentations TLS dans tous leurs états"
+kind: talk
+speakers:
+  - olivier-levillain

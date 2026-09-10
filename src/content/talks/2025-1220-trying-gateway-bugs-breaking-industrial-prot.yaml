@@ -1,0 +1,7 @@
+edition: "2025"
+start: "12:20"
+end: "13:00"
+title: "Trying Gateway Bugs : Breaking industrial protocol translation devices before the research begins"
+kind: talk
+speakers:
+  - claire-vacherot

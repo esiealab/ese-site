@@ -1,0 +1,7 @@
+edition: "2022"
+start: "16:15"
+end: "17:00"
+title: "Panorama de la cybercriminalité du Clusif 2021 (extraits)"
+kind: talk
+speakers:
+  - herve-schauer

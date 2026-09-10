@@ -1,0 +1,7 @@
+edition: "2023"
+start: "12:20"
+end: "13:00"
+title: "Mise en place d’une plateforme de test DMA pour PCILeech avec QEMU"
+kind: talk
+speakers:
+  - h2lab

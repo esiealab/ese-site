@@ -1,0 +1,9 @@
+edition: "2026"
+title: La boîte à crypto
+emoji: 🔐
+description: >-
+  Atelier proposé par l'ARCSI pour découvrir les bases de la cryptographie.
+  Comment s'échanger des messages sécurisés.
+partner:
+  name: ARCSI
+  url: https://www.arcsi.fr/

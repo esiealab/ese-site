@@ -1,0 +1,7 @@
+edition: "2022"
+start: "14:45"
+end: "15:15"
+title: "Fouillons les poubelles"
+kind: talk
+speakers:
+  - antoine-cervoise

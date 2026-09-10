@@ -1,0 +1,7 @@
+edition: "2024"
+start: "11:45"
+end: "12:25"
+title: "Numbat/Pyrrha : naviguez facilement dans les binaires de votre système"
+kind: talk
+speakers:
+  - eloise-brocas

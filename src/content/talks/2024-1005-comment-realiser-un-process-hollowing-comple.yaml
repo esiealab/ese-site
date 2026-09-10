@@ -1,0 +1,7 @@
+edition: "2024"
+start: "10:05"
+end: "10:45"
+title: "Comment réaliser un Process Hollowing complet"
+kind: talk
+speakers:
+  - kevin-pham-le

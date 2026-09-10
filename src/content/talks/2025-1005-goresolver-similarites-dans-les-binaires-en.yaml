@@ -1,0 +1,7 @@
+edition: "2025"
+start: "10:05"
+end: "10:45"
+title: "GoResolver : Similarités dans les binaires en Go"
+kind: talk
+speakers:
+  - killian-rimbaud

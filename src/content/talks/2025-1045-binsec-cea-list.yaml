@@ -1,0 +1,8 @@
+edition: "2025"
+start: "10:45"
+end: "11:25"
+title: "Binsec (CEA-List)"
+kind: talk
+speakers:
+  - frederic-recoules
+  - yanis-sellami

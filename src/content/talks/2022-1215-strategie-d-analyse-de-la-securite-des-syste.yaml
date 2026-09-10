@@ -1,0 +1,7 @@
+edition: "2022"
+start: "12:15"
+end: "13:00"
+title: "Stratégie d'analyse de la sécurité des systèmes embarqués : les outils et techniques de l'attaquant"
+kind: talk
+speakers:
+  - mathieu-renard

@@ -1,0 +1,10 @@
+edition: "2026"
+start: "11:40"
+end: "12:20"
+title: "Reverse d'un outil de bypass de protection JTAG"
+kind: talk
+track: hardware
+speakers:
+  - mathieu-renard
+abstract: >-
+  Comment un simple dongle à 15$ permet-il d'extraire le firmware de microcontrôleurs STM32 pourtant protégés ? Cette présentation revient sur le reverse complet de cette solution, depuis l'analyse du logiciel Windows protégé (WinLicense/Themida) jusqu'à la compréhension du protocole et du fonctionnement matériel du dispositif.

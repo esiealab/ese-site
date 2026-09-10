@@ -1,0 +1,44 @@
+year: 2026
+date: 2026-05-30
+venue: ESIEA
+address: 4 allée Katherine Johnson, 94200 Ivry-sur-Seine
+mapUrl: https://www.openstreetmap.org/#map=18/48.8119459/2.3929590
+access: |-
+  **Métro** : Mairie d'Ivry (ligne 7) — **RER** : Ivry-sur-Seine (ligne C)
+ticketUrl: https://www.billetweb.fr/ese-2026
+status: archived
+programStatus: provisoire
+intro: >-
+  L'ESE est revenue pour une nouvelle édition le samedi 30 mai 2026. En parallèle,
+  l'ESE4Kids a permis aux plus jeunes de s'initier au Numérique.
+tracks:
+  - id: reverse
+    label: Reverse & Exploitation
+    color: '#a855f7'
+  - id: hardware
+    label: Hardware Security
+    color: '#f97316'
+  - id: defense
+    label: Défense & Confiance
+    color: '#0ea5e9'
+  - id: cognitive
+    label: Désinformation
+    color: '#22c55e'
+kids:
+  ageRange: 8-18 ans
+  sessions:
+    - label: Matin
+      start: '10:00'
+      end: '13:00'
+    - label: Après-midi
+      start: '14:00'
+      end: '17:00'
+  intro: >-
+    En parallèle de la journée ESE se déroule l'ESE4Kids, un événement à
+    destination des plus jeunes composé cette année de quatre ateliers autour du
+    numérique et de la cybersécurité. Les parents sont les bienvenus pour
+    accompagner leurs enfants pendant les ateliers.
+  ticketUrl: https://www.billetweb.fr/ese-2026
+  gift: >-
+    L'inscription donne lieu à un ESIEAtoy en cadeau, un goodie électronique
+    programmable.

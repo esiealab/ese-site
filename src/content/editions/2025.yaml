@@ -1,0 +1,16 @@
+# Lieu inconnu : écrasé dans l'historique git, non retrouvable (cf. content-inventory.md).
+year: 2025
+date: 2025-05-17
+status: archived
+intro: >-
+  L'ESE est revenue pour une nouvelle édition le 17 mai 2025, accompagnée de
+  l'ESE-Kids pour les 9-16 ans.
+kids:
+  ageRange: 9-16 ans
+  sessions:
+    - label: Après-midi
+      start: '14:00'
+      end: '15:30'
+  intro: >-
+    Cette année, l'ESE-Kids revient ! Il est ouvert aux enfants de 9 à 16 ans avec
+    une session de 90 minutes. Le nombre de places est limité.

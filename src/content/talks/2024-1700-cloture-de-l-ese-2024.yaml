@@ -1,0 +1,8 @@
+edition: "2024"
+start: "17:00"
+end: "17:05"
+title: "Clôture de l'ESE 2024"
+kind: closing
+speakers:
+  - sebastien-larinier
+  - vincent-guyot

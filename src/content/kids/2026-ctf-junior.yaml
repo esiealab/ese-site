@@ -1,0 +1,10 @@
+edition: "2026"
+title: CTF junior
+emoji: 🚩
+description: >-
+  De retour pour cette édition ! Cet atelier s'appuie sur le livre *J'apprends à
+  hacker à partir de 9 ans*. Merci aux auteurs Sara Sellos et Nicolas Fouville
+  pour le soutien renouvelé.
+partner:
+  name: Dunod
+  url: https://www.dunod.com/sciences-techniques/j-apprends-hacker-partir-9-ans-30-defis-pour-decouvrir-cybersecurite-et-dejouer

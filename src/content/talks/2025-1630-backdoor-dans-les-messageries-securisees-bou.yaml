@@ -1,0 +1,7 @@
+edition: "2025"
+start: "16:30"
+end: "17:10"
+title: "Backdoor dans les messageries sécurisées bout en bout, en voilà une mauvaise idée !"
+kind: talk
+speakers:
+  - sebastien-larinier
