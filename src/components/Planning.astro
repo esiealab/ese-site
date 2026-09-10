@@ -1,0 +1,49 @@
+---
+import TalkCard from './TalkCard.astro';
+import { getProgramme, type Edition } from '../lib/content';
+
+interface Props {
+  edition: Edition;
+  heading?: string;
+  headingLevel?: 'h2' | 'h3';
+}
+const { edition, heading = 'Programme', headingLevel = 'h2' } = Astro.props;
+
+const talks = await getProgramme(edition.id);
+const tracks = edition.data.tracks ?? [];
+const Heading = headingLevel;
+---
+
+{talks.length > 0 && (
+  <section id="programme" class="mx-auto max-w-4xl px-4 py-10">
+    <Heading class="font-display text-2xl font-bold sm:text-3xl">{heading}</Heading>
+
+    {edition.data.programStatus === 'provisoire' && (
+      <p class="mt-1 text-sm italic text-ese-muted">Programme provisoire</p>
+    )}
+
+    {/* Sans JS les boutons restent masqués : tout le programme reste visible. */}
+    {tracks.length > 0 && (
+      <div class="mt-4 hidden flex-wrap gap-2" data-planning-filters hidden>
+        <button type="button" class="filter-pill" data-filter-value="all" aria-pressed="true">Tout</button>
+        {tracks.map((t) => (
+          <button type="button" class="filter-pill" data-filter-value={t.id} aria-pressed="false">
+            {t.label}
+          </button>
+        ))}
+      </div>
+    )}
+
+    <ul class="mt-4 flex flex-col gap-2" data-planning-list>
+      {talks.map((talk) => <TalkCard talk={talk} edition={edition} />)}
+    </ul>
+
+    <p class="mt-3 text-sm text-ese-muted" data-planning-empty hidden>
+      Aucune conférence pour cette thématique.
+    </p>
+  </section>
+)}
+
+<script>
+  import '../scripts/planning-filter';
+</script>

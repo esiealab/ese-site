@@ -1,0 +1,20 @@
+---
+import { getSite } from '../lib/content';
+const site = await getSite();
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-16 border-t border-black/5 bg-ese-dark text-white/80">
+  <div class="mx-auto flex max-w-5xl flex-col gap-4 px-4 py-8 sm:flex-row sm:items-center sm:justify-between">
+    <p class="text-sm">© {site.name} {year}</p>
+
+    <ul class="flex flex-wrap items-center gap-4 text-sm">
+      {site.social.map((s) => (
+        <li><a class="tap-target hover:text-ese-secondary" href={s.url}>{s.name === 'linkedin' ? 'LinkedIn' : s.name}</a></li>
+      ))}
+      <li><a class="tap-target hover:text-ese-secondary" href={`mailto:${site.email}`}>{site.email}</a></li>
+      <li><a class="tap-target hover:text-ese-secondary" href="/rss.xml">RSS</a></li>
+      <li><a class="tap-target hover:text-ese-secondary" href="/mentions-legales/">Mentions légales</a></li>
+    </ul>
+  </div>
+</footer>

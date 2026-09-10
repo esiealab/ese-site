@@ -1,0 +1,26 @@
+---
+import { formatDateLong } from '../lib/content';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'news'>;
+  headingLevel?: 'h2' | 'h3';
+}
+const { entry, headingLevel = 'h3' } = Astro.props;
+const Heading = headingLevel;
+const d = entry.data;
+---
+
+<article class="rounded-lg bg-white p-4 shadow-sm ring-1 ring-black/5">
+  <p class="text-sm text-ese-muted"><time datetime={d.date.toISOString()}>{formatDateLong(d.date)}</time></p>
+  <Heading class="mt-1 font-display font-bold">
+    <a class="tap-target hover:text-ese-link" href={`/news/${entry.id}/`}>{d.title}</a>
+  </Heading>
+  {d.tags.length > 0 && (
+    <ul class="mt-2 flex flex-wrap gap-1">
+      {d.tags.map((t) => (
+        <li class="rounded-full bg-ese-secondary/20 px-2 py-0.5 text-xs font-bold">{t}</li>
+      ))}
+    </ul>
+  )}
+</article>

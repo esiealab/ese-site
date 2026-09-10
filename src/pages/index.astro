@@ -1,0 +1,65 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import EditionIntro from '../components/EditionIntro.astro';
+import Planning from '../components/Planning.astro';
+import Kids from '../components/Kids.astro';
+import Partners from '../components/Partners.astro';
+import NewsCard from '../components/NewsCard.astro';
+import ArchiveCard from '../components/ArchiveCard.astro';
+import { getSite, getCurrentEdition, getPinnedNews, getPreviousEditions, getVisibleNews } from '../lib/content';
+
+const site = await getSite();
+const edition = await getCurrentEdition();
+const status = edition.data.status;
+
+const pinned = await getPinnedNews(3);
+const previous = await getPreviousEditions(3);
+
+// Le CTA du hero dépend de l'état du cycle de l'édition.
+let cta: { href: string; label: string } | null = null;
+if (status === 'cfp-open') {
+  const cfp = (await getVisibleNews()).find((n) => n.data.tags.includes('cfp'));
+  if (cfp) cta = { href: `/news/${cfp.id}/`, label: 'Appel à conférences' };
+} else if (status === 'program-published' && edition.data.ticketUrl) {
+  cta = { href: edition.data.ticketUrl, label: 'Réserver sa place' };
+} else if (status === 'past' && edition.data.slidesUrl) {
+  cta = { href: edition.data.slidesUrl, label: 'Voir les slides' };
+}
+
+const showProgramme = status === 'program-published' || status === 'past';
+---
+
+<Base>
+  <Hero edition={edition} siteName={site.name} cta={cta} />
+
+  {pinned.length > 0 && (
+    <section id="news" class="mx-auto max-w-4xl px-4 py-10">
+      <h2 class="font-display text-2xl font-bold">À la une</h2>
+      <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {pinned.map((entry) => <NewsCard entry={entry} />)}
+      </div>
+    </section>
+  )}
+
+  <EditionIntro edition={edition} />
+
+  {showProgramme && <Planning edition={edition} />}
+
+  <Kids edition={edition} />
+  <Partners year={edition.data.year} />
+
+  {previous.length > 0 && (
+    <section class="mx-auto max-w-4xl px-4 py-10">
+      <h2 class="font-display text-2xl font-bold">Éditions précédentes</h2>
+      <div class="mt-4 grid gap-4 sm:grid-cols-3">
+        {previous.map((e) => <ArchiveCard edition={e} />)}
+      </div>
+      <p class="mt-4">
+        <a class="inline-flex min-h-11 items-center font-bold text-ese-link hover:underline" href="/archives/">
+          Toutes les éditions
+        </a>
+      </p>
+    </section>
+  )}
+</Base>

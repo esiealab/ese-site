@@ -1,0 +1,25 @@
+---
+import { formatDateLong, getProgramme, type Edition } from '../lib/content';
+
+interface Props {
+  edition: Edition;
+  headingLevel?: 'h2' | 'h3';
+}
+const { edition, headingLevel = 'h3' } = Astro.props;
+const Heading = headingLevel;
+const d = edition.data;
+const talks = await getProgramme(edition.id);
+const conferences = talks.filter((t) => t.data.kind === 'talk' || t.data.kind === 'workshop').length;
+---
+
+<article class="rounded-lg bg-white p-4 shadow-sm ring-1 ring-black/5">
+  <Heading class="font-display text-lg font-bold">
+    <a class="tap-target hover:text-ese-link" href={`/archives/${d.year}/`}>ESE {d.year}</a>
+  </Heading>
+  <p class="mt-1 text-sm text-ese-muted">
+    {d.date ? formatDateLong(d.date) : 'Date inconnue'}{d.venue && <> · {d.venue}</>}
+  </p>
+  <p class="mt-2 text-sm">
+    {conferences > 0 ? `${conferences} conférence${conferences > 1 ? 's' : ''}` : 'Programme non conservé'}
+  </p>
+</article>

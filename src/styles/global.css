@@ -1,0 +1,105 @@
+@import 'tailwindcss';
+@import '@fontsource/montserrat/400.css';
+@import '@fontsource/montserrat/700.css';
+@import '@fontsource/lato/400.css';
+@import '@fontsource/lato/700.css';
+
+@theme {
+  /* Identité d'origine, réservée aux aplats et aux accents. */
+  --color-ese-primary: #3cb371;
+  --color-ese-secondary: #6ecf99;
+  --color-ese-dark: #00283c;
+
+  /* Variantes assombries pour le TEXTE : #3cb371 ne donne que 2,7:1 sur blanc
+     et #777 que 4,5:1 sur blanc mais 4,2:1 sur gris clair — sous le seuil AA.
+     Celles-ci tiennent 4,5:1 sur blanc comme sur #f7f7f7. */
+  --color-ese-link: #297d50;
+  --color-ese-muted: #6b6b6b;
+
+  --font-display: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Lato', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+  }
+
+  /* `min-height` n'a aucun effet sur un élément `display: inline` : les cibles
+     tactiles doivent donc porter explicitement .tap-target (voir plus bas).
+     Les liens inline dans un paragraphe en sont dispensés — exception prévue
+     par WCAG 2.5.8 pour le texte courant. */
+  button, summary {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Couleur portée par --track-color, définie dans /tracks.css généré depuis les
+   données des éditions (voir src/pages/tracks.css.ts). */
+.track-badge {
+  --track-color: var(--color-ese-muted);
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 0.125rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background-color: color-mix(in srgb, var(--track-color) 16%, white);
+  color: color-mix(in srgb, var(--track-color) 72%, black);
+}
+
+.track-rail {
+  --track-color: var(--color-ese-muted);
+  border-inline-start: 3px solid var(--track-color);
+}
+
+.filter-pill {
+  min-height: 44px;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--color-ese-dark) 15%, transparent);
+  padding: 0 1rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.filter-pill[aria-pressed='true'] {
+  background-color: var(--color-ese-dark);
+  color: white;
+  border-color: var(--color-ese-dark);
+}
+
+.prose-ese a {
+  color: var(--color-ese-link);
+  text-decoration: underline;
+}
+
+.prose-ese p + p {
+  margin-top: 0.5rem;
+}
+
+.tap-target {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}

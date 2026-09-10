@@ -1,0 +1,38 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { formatDateLong } from '../../lib/content';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const news = await getCollection('news');
+  return news.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+};
+
+interface Props { entry: CollectionEntry<'news'> }
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const expired = d.expires ? d.expires < new Date() : false;
+---
+
+<Base title={d.title}>
+  <article class="mx-auto max-w-3xl px-4 py-10">
+    <p class="text-sm text-ese-muted"><time datetime={d.date.toISOString()}>{formatDateLong(d.date)}</time></p>
+    <h1 class="mt-1 font-display text-3xl font-bold">{d.title}</h1>
+
+    {expired && (
+      <p class="mt-4 rounded border border-black/10 bg-black/[0.03] px-4 py-2 text-sm text-ese-muted">
+        Cette annonce est passée{d.expires && <> : la date limite était le {formatDateLong(d.expires)}</>}.
+      </p>
+    )}
+
+    <div class="prose-ese mt-6 leading-relaxed"><Content /></div>
+
+    <p class="mt-8">
+      <a class="inline-flex min-h-11 items-center font-bold text-ese-link hover:underline" href="/news/">
+        Toutes les actualités
+      </a>
+    </p>
+  </article>
+</Base>

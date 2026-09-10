@@ -1,0 +1,52 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+import esiea from '../assets/esiea.png';
+
+const links = [
+  { href: '/#programme', label: 'Programme' },
+  { href: '/news/', label: 'Actualités' },
+  { href: '/archives/', label: 'Archives' },
+];
+---
+
+<header class="sticky top-0 z-40 border-b border-black/5 bg-white/95 backdrop-blur">
+  <nav class="mx-auto flex max-w-5xl items-center gap-3 px-4 py-2" aria-label="Navigation principale">
+    <a href="/" class="tap-target shrink-0" aria-label="Accueil ESIEA Secure Edition">
+      <Image src={logo} alt="ESIEA Secure Edition" width={44} height={44} densities={[1, 2]} loading="eager" class="h-9 w-9 sm:h-11 sm:w-11" />
+    </a>
+
+    {/* <details> plutôt qu'un script : le menu fonctionne sans JS. */}
+    <details class="group relative ml-auto md:hidden">
+      <summary
+        class="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded text-ese-dark"
+        aria-label="Ouvrir le menu"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18" />
+        </svg>
+      </summary>
+      <ul class="absolute right-0 top-full mt-1 min-w-44 rounded border border-black/10 bg-white py-1 shadow-lg">
+        {links.map((l) => (
+          <li>
+            <a href={l.href} class="tap-target px-4 hover:bg-ese-secondary/15">{l.label}</a>
+          </li>
+        ))}
+      </ul>
+    </details>
+
+    <ul class="ml-auto hidden items-center gap-1 md:flex">
+      {links.map((l) => (
+        <li>
+          <a href={l.href} class="tap-target rounded px-3 font-display text-sm font-bold uppercase tracking-wide hover:text-ese-link">
+            {l.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <a href="https://www.esiea.fr" class="tap-target ml-2 hidden shrink-0 sm:inline-flex" aria-label="ESIEA">
+      <Image src={esiea} alt="ESIEA" width={90} height={54} densities={[1, 2]} class="h-8 w-auto" />
+    </a>
+  </nav>
+</header>

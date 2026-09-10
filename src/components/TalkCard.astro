@@ -1,0 +1,60 @@
+---
+import TrackBadge from './TrackBadge.astro';
+import { md } from '../lib/markdown';
+import { getTalkSpeakers, type Talk, type Edition } from '../lib/content';
+
+interface Props {
+  talk: Talk;
+  edition: Edition;
+}
+const { talk, edition } = Astro.props;
+const d = talk.data;
+
+const speakers = await getTalkSpeakers(talk);
+const track = (edition.data.tracks ?? []).find((t) => t.id === d.track);
+const isPause = d.kind === 'break' || d.kind === 'lunch';
+
+const abstractHtml = d.abstract ? md(d.abstract) : null;
+const byline = speakers
+  .map((s) => (s.data.affiliation ? `${s.data.name} · ${s.data.affiliation}` : s.data.name))
+  .join(', ');
+---
+
+<li
+  class:list={[
+    'flex flex-col gap-1 rounded-lg px-3 py-3 sm:flex-row sm:gap-4',
+    isPause ? 'bg-black/[0.03] text-ese-muted' : 'track-rail bg-white shadow-sm ring-1 ring-black/5',
+  ]}
+  data-track={track ? `${edition.data.year}-${track.id}` : undefined}
+  data-filter={d.track ?? 'none'}
+>
+  <p class="shrink-0 font-mono text-sm tabular-nums sm:w-28 sm:pt-0.5">
+    <time>{d.start}</time>{d.end && <> – <time>{d.end}</time></>}
+  </p>
+
+  <div class="min-w-0 flex-1">
+    {track && <TrackBadge year={edition.data.year} id={track.id} label={track.label} class="mb-1" />}
+    {d.lang === 'en' && (
+      <span class="mb-1 ml-1 inline-flex items-center rounded-full bg-ese-dark/10 px-2 py-0.5 text-xs font-bold">
+        en anglais
+      </span>
+    )}
+
+    <p class:list={['font-display', isPause ? 'font-normal' : 'font-bold']}>{d.title}</p>
+    {byline && <p class="text-sm text-ese-muted">{byline}</p>}
+
+    {abstractHtml && (
+      <details class="mt-1 group">
+        <summary class="inline-flex min-h-11 cursor-pointer items-center text-sm font-bold text-ese-link">
+          <span class="group-open:hidden">Voir le résumé</span>
+          <span class="hidden group-open:inline">Masquer le résumé</span>
+        </summary>
+        <div class="prose-ese mt-1 text-sm leading-relaxed" set:html={abstractHtml} />
+      </details>
+    )}
+
+    {d.slides && (
+      <p class="mt-1 text-sm"><a class="font-bold text-ese-link hover:underline" href={d.slides}>Slides</a></p>
+    )}
+  </div>
+</li>

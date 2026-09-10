@@ -1,0 +1,36 @@
+---
+import { md } from '../lib/markdown';
+import type { Edition } from '../lib/content';
+
+interface Props { edition: Edition }
+const { edition } = Astro.props;
+const d = edition.data;
+---
+
+<section class="mx-auto max-w-3xl px-4 py-10">
+  {d.intro && <div class="prose-ese text-lg leading-relaxed" set:html={md(d.intro)} />}
+
+  <dl class="mt-6 grid gap-3 text-sm sm:grid-cols-2">
+    {d.venue && (
+      <div>
+        <dt class="font-display font-bold">Lieu</dt>
+        <dd>
+          {d.mapUrl ? <a class="text-ese-link hover:underline" href={d.mapUrl}>{d.venue}{d.address && <>, {d.address}</>}</a>
+                    : <>{d.venue}{d.address && <>, {d.address}</>}</>}
+        </dd>
+      </div>
+    )}
+    {d.access && (
+      <div>
+        <dt class="font-display font-bold">Accès</dt>
+        <dd class="prose-ese" set:html={md(d.access)} />
+      </div>
+    )}
+    {d.price && (
+      <div>
+        <dt class="font-display font-bold">Tarif</dt>
+        <dd>{d.price}</dd>
+      </div>
+    )}
+  </dl>
+</section>

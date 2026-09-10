@@ -1,0 +1,58 @@
+---
+import { md } from '../lib/markdown';
+import { getKidsWorkshops, type Edition } from '../lib/content';
+
+interface Props { edition: Edition }
+const { edition } = Astro.props;
+const kids = edition.data.kids;
+const workshops = await getKidsWorkshops(edition.id);
+---
+
+{kids && (
+  <section id="ese4kids" class="bg-ese-secondary/10 py-10">
+    <div class="mx-auto max-w-4xl px-4">
+      <h2 class="font-display text-2xl font-bold sm:text-3xl">ESE4Kids</h2>
+      <p class="mt-1 text-sm font-bold text-ese-muted">{kids.ageRange}</p>
+
+      <div class="prose-ese mt-3 leading-relaxed" set:html={md(kids.intro)} />
+
+      {kids.sessions.length > 0 && (
+        <ul class="mt-4 flex flex-wrap gap-2">
+          {kids.sessions.map((s) => (
+            <li class="rounded-full bg-white px-3 py-1 text-sm font-bold shadow-sm">
+              {s.label} · {s.start} – {s.end}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {workshops.length > 0 && (
+        <ul class="mt-6 grid gap-4 sm:grid-cols-2">
+          {workshops.map((w) => (
+            <li class="rounded-lg bg-white p-4 shadow-sm ring-1 ring-black/5">
+              <h3 class="font-display font-bold">
+                {w.data.emoji && <span aria-hidden="true">{w.data.emoji} </span>}{w.data.title}
+              </h3>
+              <div class="prose-ese mt-1 text-sm leading-relaxed" set:html={md(w.data.description)} />
+              {w.data.partner && (
+                <p class="mt-2 text-sm">
+                  Avec <a class="font-bold text-ese-link hover:underline" href={w.data.partner.url}>{w.data.partner.name}</a>
+                </p>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {kids.gift && <p class="mt-4 text-sm text-ese-muted">{kids.gift}</p>}
+
+      {kids.ticketUrl && (
+        <p class="mt-4">
+          <a class="inline-flex min-h-11 items-center font-bold text-ese-link hover:underline" href={kids.ticketUrl}>
+            Inscription aux ateliers
+          </a>
+        </p>
+      )}
+    </div>
+  </section>
+)}

@@ -1,0 +1,57 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import EditionIntro from '../../components/EditionIntro.astro';
+import Planning from '../../components/Planning.astro';
+import Kids from '../../components/Kids.astro';
+import Partners from '../../components/Partners.astro';
+import { formatDateLong, getArchivedEditions, getProgramme, type Edition } from '../../lib/content';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const editions = await getArchivedEditions();
+  return editions.map((edition) => ({
+    params: { year: String(edition.data.year) },
+    props: { edition },
+  }));
+};
+
+interface Props { edition: Edition }
+const { edition } = Astro.props;
+const d = edition.data;
+const talks = await getProgramme(edition.id);
+---
+
+<Base title={`ESE ${d.year}`} description={d.intro}>
+  <div class="border-b border-black/5 bg-black/[0.03]">
+    <p class="mx-auto max-w-4xl px-4 py-2 text-sm text-ese-muted">
+      Édition passée{d.date && <> — {formatDateLong(d.date)}</>}
+    </p>
+  </div>
+
+  <section class="mx-auto max-w-4xl px-4 pt-8">
+    <h1 class="font-display text-3xl font-bold">ESE {d.year}</h1>
+  </section>
+
+  <EditionIntro edition={edition} />
+
+  {talks.length > 0
+    ? <Planning edition={edition} />
+    : <p class="mx-auto max-w-4xl px-4 py-6 text-ese-muted">Programme non conservé pour cette édition.</p>}
+
+  {d.slidesUrl && (
+    <p class="mx-auto max-w-4xl px-4 pb-6">
+      <a class="inline-flex min-h-11 items-center font-bold text-ese-link hover:underline" href={d.slidesUrl}>
+        Slides de l'édition
+      </a>
+    </p>
+  )}
+
+  <Kids edition={edition} />
+  <Partners year={d.year} />
+
+  <p class="mx-auto max-w-4xl px-4 py-8">
+    <a class="inline-flex min-h-11 items-center font-bold text-ese-link hover:underline" href="/archives/">
+      Toutes les archives
+    </a>
+  </p>
+</Base>

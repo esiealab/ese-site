@@ -1,0 +1,23 @@
+---
+import Base from '../../layouts/Base.astro';
+import ArchiveCard from '../../components/ArchiveCard.astro';
+import { md } from '../../lib/markdown';
+import { getSite, getArchivedEditions } from '../../lib/content';
+
+const site = await getSite();
+const editions = await getArchivedEditions();
+const span = editions.length > 0 ? `${editions.length} éditions depuis ${site.firstEdition}` : null;
+---
+
+<Base title="Archives" description={`Les éditions passées de l'${site.name}.`}>
+  <section class="mx-auto max-w-4xl px-4 py-10">
+    <h1 class="font-display text-3xl font-bold">Archives</h1>
+    {span && <p class="mt-1 text-ese-muted">{span}</p>}
+
+    <div class="prose-ese mt-4 leading-relaxed" set:html={md(site.history)} />
+
+    <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {editions.map((e) => <ArchiveCard edition={e} headingLevel="h2" />)}
+    </div>
+  </section>
+</Base>

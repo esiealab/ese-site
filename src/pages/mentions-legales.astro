@@ -1,0 +1,15 @@
+---
+import { getEntry, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+const page = await getEntry('pages', 'mentions-legales');
+if (!page) throw new Error('src/content/pages/mentions-legales.md est absent.');
+const { Content } = await render(page);
+---
+
+<Base title={page.data.title} description={page.data.description}>
+  <article class="mx-auto max-w-3xl px-4 py-10">
+    <h1 class="font-display text-3xl font-bold">{page.data.title}</h1>
+    <div class="prose-ese mt-6 leading-relaxed"><Content /></div>
+  </article>
+</Base>

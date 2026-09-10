@@ -1,0 +1,11 @@
+---
+interface Props {
+  year: number;
+  id: string;
+  label: string;
+  class?: string;
+}
+const { year, id, label, class: className = '' } = Astro.props;
+---
+
+<span class:list={['track-badge', className]} data-track={`${year}-${id}`}>{label}</span>
