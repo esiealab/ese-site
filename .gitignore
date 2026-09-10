@@ -5,3 +5,8 @@ dist/
 *.log
 .env
 .env.production
+
+# Documents de travail de la migration : ils vivent en local et dans ese-back,
+# pas dans le dépôt public.
+CLAUDE.md
+MIGRATION_PLAN.md
