@@ -1,0 +1,14 @@
+# Exemple d'exploitation sur le host de prod. Seul endroit où l'organisation
+# GitHub est nommée : pendant la phase de dev, substituer `sebdraven`.
+services:
+  ese-site:
+    image: ghcr.io/esiealab/ese-site:latest
+    pull_policy: always
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8081:8080"
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true

@@ -1,0 +1,66 @@
+name: CI
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - run: npx astro check
+
+      - run: npx astro build
+
+      - uses: docker/setup-buildx-action@37fe631027851001ddb9b187196cc803df7f5f0e # v4.3.0
+
+      - name: Build image (sans push)
+        uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7.3.0
+        with:
+          context: .
+          push: false
+          load: true
+          tags: ese-site:pr
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      # Construire l'image ne prouve pas qu'elle démarre : une erreur de syntaxe
+      # nginx ne se voit qu'à l'exécution.
+      - name: Démarrer l'image et vérifier qu'elle répond
+        run: |
+          docker run -d --name ese-ci -p 8080:8080 ese-site:pr
+          for i in $(seq 1 30); do
+            curl -sf -o /dev/null http://127.0.0.1:8080/robots.txt && break
+            sleep 1
+          done
+          if ! curl -sf -o /dev/null http://127.0.0.1:8080/robots.txt; then
+            echo "::error::le conteneur ne répond pas"
+            docker logs ese-ci
+            exit 1
+          fi
+          headers=$(curl -sS -I http://127.0.0.1:8080/robots.txt)
+          for h in "X-Content-Type-Options" "Referrer-Policy" "Content-Security-Policy"; do
+            if ! grep -qi "^$h:" <<< "$headers"; then
+              echo "::error::en-tête $h absent"
+              exit 1
+            fi
+          done
+          docker rm -f ese-ci
