@@ -15,14 +15,14 @@
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
-    "@astrojs/sitemap": "^3.7.4",
+    "@astrojs/sitemap": "^3.7.5",
     "@fontsource/lato": "^5.3.0",
     "@fontsource/montserrat": "^5.3.0",
-    "astro": "^7.3.2",
+    "astro": "^7.4.12",
     "marked": "^18.0.12"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.10",
+    "@astrojs/check": "^0.9.12",
     "@tailwindcss/vite": "^4.3.3",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.9.2"
